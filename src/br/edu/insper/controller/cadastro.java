@@ -10,15 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class login
+ * Servlet implementation class cadastro
  */
-@WebServlet("/login")
-public class login extends HttpServlet {
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+@WebServlet("/cadastro")
+public class cadastro extends HttpServlet {
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastro.jsp");
 		dispatcher.forward(request, response);
 	}
 

@@ -8,8 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
-
 public class DAO {
 
 	private Connection connection = null;
