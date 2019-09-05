@@ -8,8 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
-
 public class DAO {
 
 	private Connection connection = null;
@@ -22,7 +20,7 @@ public class DAO {
 			e1.printStackTrace();
 		}
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/meus_dados", "root", "123456");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/RetroHub", "root", "123456");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
