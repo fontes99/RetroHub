@@ -22,51 +22,122 @@ public class DAO {
 			e1.printStackTrace();
 		}
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/meus_dados", "root", "123456");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/RetroHub", "", "");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
-	public List getLista() throws SQLException {
+	
+	public boolean addUser(User user) {
+		try {
+			
+			String sql = "SELECT * FROM user WHERE name=?";
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			
+			stmt.setString(1,user.getName());
+			ResultSet rs = stmt.executeQuery();
+			
+			if(!rs.next()) {
+				
+				sql = "INSERT INTO user" + "(name,password) values(?,?)";
+				stmt = connection.prepareStatement(sql);
+				
+				stmt.setString(1,user.getName());
+				stmt.setString(2,user.getPassword());
+				stmt.execute();
+				stmt.close();
+				
+				return true;
+				
+			}
+		} 
 		
-		List pessoas = (List) new ArrayList<User>();
-		
-		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Pessoas");
-		
-		ResultSet rs = stmt.executeQuery();
-		
-		while (rs.next()) {
-			User pessoa = new User();
-			pessoa.setId(rs.getInt("id"));
-			pessoa.setNome(rs.getString("nome"));
-			Calendar data = Calendar.getInstance();
-			data.setTime(rs.getDate("nascimento"));
-			pessoa.setNascimento(data);
-			pessoa.setAltura(rs.getDouble("altura"));
-			((ArrayList<User>) pessoas).add(pessoa);
-		}
-		rs.close();
-		stmt.close();
-		return pessoas;
-	}
-
-	public void close() throws SQLException {
-		// TODO Auto-generated method stub
-		connection.close();
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return false;
 	}
 	
-	public void adiciona(User pessoa) throws SQLException {
-		String sql = "INSERT INTO Pessoas" +
-		"(nome,nascimento,altura) values(?,?,?)";
-		PreparedStatement stmt = connection.prepareStatement(sql);
-		stmt.setString(1,pessoa.getNome());
-		stmt.setDate(2, new java.sql.Date(
-		pessoa.getNascimento().getTimeInMillis()));
-		stmt.setDouble(3,pessoa.getAltura());
-		stmt.execute();
-		stmt.close();
+	public int getUserId(User user) {
+		
+		int id;
+		try {
+			
+			String sql = "SELECT * FROM users WHERE name=?";
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			
+			stmt.setString(1, user.getName());
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			if(rs.next()) {
+				id = rs.getInt("id");	
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
 		}
+		return id;
+	}
 
-}
+	public List<User> getUsers(){
+		
+		List<User> users = (List) new ArrayList<User>();
+		
+		try {
+			
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM user");
+			ResultSet lista;
+			
+			lista = stmt.executeQuery();
+			
+			while (lista.next()) {
+				User user = new User();
+				user.setUserId(lista.getInt("id"));
+				user.setName(lista.getString("name"));
+				user.setPassword(lista.getString("password"));
+				users.add(user);
+				
+			lista.close();
+			stmt.close();
+			}
+					
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+	
+	public boolean login(User user) {
+
+		boolean status = false;
+		
+		try {
+
+			String sql = "SELECT * FROM user WHERE name=? AND password=?";
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			
+			stmt.setString(1, user.getName());
+			stmt.setString(2, user.getPassword());
+			
+			ResultSet check = stmt.executeQuery();
+			status = check.next();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return status;
+	}
+	
+	public void close() {
+		// TODO Auto-generated method stub
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
