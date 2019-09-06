@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.edu.insper.model.DAO;
+import br.edu.insper.model.User;
+
 /**
  * Servlet implementation class login
  */
@@ -27,6 +30,44 @@ public class login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		String pass = request.getParameter("password");
+		String name = request.getParameter("username");
+		
+		if(!pass.isEmpty() || !name.isEmpty()) {
+			
+			DAO dao = new DAO();
+			User user= new User();
+			
+			user.setUsername(name);
+			user.setPassword(pass);
+			
+			boolean status = dao.login(user);
+			
+			if(status) {
+				
+				int id = dao.getUserId(user);
+				request.setAttribute("userId", id);
+				
+				// mostrar as coisas do usuario	
+				
+			}
+			
+			else {
+				request.setAttribute("loged", "username ou senha incorretos");
+				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+				rd.forward(request, response);
+			}
+			
+		}
+		
+		else {
+			request.setAttribute("emptyCamps", "campos vazios");
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			rd.forward(request, response);
+		}
+		
+		
 		doGet(request, response);
 	}
 
