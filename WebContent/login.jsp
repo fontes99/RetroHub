@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<h1>RetroHub</h1>
+	<h1>RetroHub</h1><hr/>
 	<br /> Faça seu login caso já tenha um usuário!
 	<br />
 	<br />
@@ -22,9 +22,9 @@
 		<input type='password' name='password' /> <br /> 
 		<input type='submit' />
 	</form>
-	<br /> Ainda não tem um usuário?
+	<br/> Ainda não tem um usuário?
 	<a href='cadastro'>Clique aqui!</a>
-	<br />
+	<br/>
 
 </body>
 </html>

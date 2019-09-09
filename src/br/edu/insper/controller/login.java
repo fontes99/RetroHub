@@ -25,9 +25,6 @@ public class login extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
@@ -35,40 +32,32 @@ public class login extends HttpServlet {
 		String name = request.getParameter("username");
 		
 		if(!pass.isEmpty() || !name.isEmpty()) {
-			
 			DAO dao = new DAO();
 			User user= new User();
-			
-			user.setUsername(name);
+			user.setName(name);
 			user.setPassword(pass);
 			
 			boolean status = dao.login(user);
 			
 			if(status) {
-				
 				int id = dao.getUserId(user);
-				request.setAttribute("userId", id);
-				
-				// mostrar as coisas do usuario	
-				
+				request.getSession().setAttribute("idUser", id);
+				response.sendRedirect("main");
 			}
 			
 			else {
 				request.setAttribute("loged", "username ou senha incorretos");
-				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 				rd.forward(request, response);
 			}
-			
 		}
 		
 		else {
 			request.setAttribute("emptyCamps", "campos vazios");
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 			rd.forward(request, response);
 		}
-		
-		
-		doGet(request, response);
+
 	}
 
 }
