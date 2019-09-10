@@ -23,7 +23,9 @@ import br.edu.insper.model.User;
 public class chat extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("chat.jsp");
+//		String myURL = (String) request.getAttribute("myURL");
 		dispatcher.forward(request, response);
+//		dispatcher.
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

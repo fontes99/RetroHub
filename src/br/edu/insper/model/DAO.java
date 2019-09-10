@@ -21,7 +21,7 @@ public class DAO {
 			e1.printStackTrace();
 		}
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/RetroHub", "root", "abacaxienois");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/RetroHub", "root", "");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
