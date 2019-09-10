@@ -9,16 +9,18 @@
 <body>
 <%@ page import="java.util.*,br.edu.insper.controller.*,br.edu.insper.model.*" %>
 <%-- <% session.setAttribute("backToMain", "true"); %> --%>
-<h1><a href="main">RetroHub</a></h1><hr/>
+<h1><a href="main">RetroHub</a></h1>
+<a href="login">log out</a>
+<hr/>
 <% 
-DAO dao = new DAO(); 
-//String chatName = (String) session.getAttribute("subjectName");
+DAO dao = new DAO();
+String myURL = request.getParameter("myURL");
 String chatName = request.getParameter("subjectName");
 %>
 <h1>Assunto do chat: <i><%=chatName%></i></h1>
+
 <table border='1'>
 <%
- String myURL = (String) session.getAttribute("myURL");
  List<Message> messages = dao.getChatMessages(myURL);
  for (Message message : messages ) { %>
  <tr>
