@@ -1,2 +1,12 @@
 # RetroHub
 Projeto de Tecnologias Web
+
+## Setting up mySQL
+
+    CREATE DATABASE RetroHub;
+
+    USE DATABASE RetroHub;
+
+    CREATE TABLE users(userId INT(32) AUTO_INCREMENT NOT NULL PRIMARY KEY, username VARCHAR(50) NOT NULL, password VARCHAR(255) NOT NULL);
+
+    CREATE TABLE subjects(id INT(32) NOT NULL AUTO_INCREMENT PRIMARY KEY, subject VARCHAR(255) NOT NULL, url VARCHAR(255) NOT NULL);
