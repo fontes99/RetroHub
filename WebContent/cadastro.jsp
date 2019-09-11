@@ -5,10 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>RetroHub - Cadastro</title>
+<link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-<h1>Bem-vindo ao RetroHub!</h1><br/><br/>
+<h1>Bem-vindo ao RetroHub!</h1><hr/><br/><br/>
 
 Cadastre-se abaixo: <br/><br/>
 <form method='post'>

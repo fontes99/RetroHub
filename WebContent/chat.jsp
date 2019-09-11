@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>RetroHub - Chat</title>
+<link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 <%@ page import="java.util.*,br.edu.insper.controller.*,br.edu.insper.model.*" %>
