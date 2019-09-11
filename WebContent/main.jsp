@@ -36,7 +36,7 @@
 		<br />
 		<b>Crie uma nova conversa:</b><br /> <input
 			placeholder='Digite o nome da nova conversa aqui' type='text'
-			name='newSubject' /> <br /> <input type='submit' />
+			name='newSubject' required='required'/> <br /> <input type='submit' />
 	</form>
 </body>
 </html>
