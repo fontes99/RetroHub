@@ -33,6 +33,7 @@ public class cadastro extends HttpServlet {
 		if (!request.getParameter("password").equals(request.getParameter("passwordConf"))) {
 			out.println("<style>b {color:red;}</style>");
 			out.println("<br/><b>Senha diferente nos campos!</b><br/>");
+			out.println("<a href='cadastro'>Tentar novamente!</a>");
 			
 		} else {
 			user.setName(request.getParameter("name"));
@@ -40,6 +41,7 @@ public class cadastro extends HttpServlet {
 			if (dao.checkIfUserExists(user)) {
 				out.println("<style>b {color:red;}</style>");
 				out.println("<br/><b>Este usuário já existe!</b><br/>");
+				out.println("<a href='login'>Ir para o login!</a>");
 			} else {
 				dao.addUser(user);
 				response.sendRedirect("login");

@@ -9,7 +9,9 @@
 </head>
 <body>
 
-<h1>Bem-vindo ao RetroHub!</h1><hr/><br/><br/>
+<h1>Bem-vindo ao RetroHub!</h1>
+<a href='login'>Voltar ao login</a>
+<hr/><br/><br/>
 
 Cadastre-se abaixo: <br/><br/>
 <form method='post'>

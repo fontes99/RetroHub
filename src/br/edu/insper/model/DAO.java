@@ -21,7 +21,7 @@ public class DAO {
 			e1.printStackTrace();
 		}
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/RetroHub", "root", "");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/RetroHub", "root", "abacaxienois");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,7 +53,7 @@ public class DAO {
 			stmt.setString(1, name);
 			ResultSet rs = stmt.executeQuery();
 			if (rs == null) {
-				return true;
+				return false;
 			}
 			rs.close();
 			stmt.close();
@@ -62,7 +62,7 @@ public class DAO {
 			e.printStackTrace();
 		}
 		
-		return false;
+		return true;
 	}
 	
 	public int getUserId(User user) {
