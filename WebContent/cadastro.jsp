@@ -12,9 +12,9 @@
 
 Cadastre-se abaixo: <br/><br/>
 <form method='post'>
-Usuário: <br/><input type='text' name='name'/> <br/>
-Senha: <br/><input type='password' name='password'/> <br/>
-Confirmar senha: <br/><input type='password' name='passwordConf'/> <br/>
+Usuário: <br/><input type='text' name='name'required='required'/> <br/>
+Senha: <br/><input type='password' name='password'required='required'/> <br/>
+Confirmar senha: <br/><input type='password' name='passwordConf'required='required'/> <br/>
 <input type='submit'/>
 </form>
 

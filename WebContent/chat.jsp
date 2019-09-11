@@ -32,7 +32,7 @@ String chatName = request.getParameter("subjectName");
 <% } %>
 </table>
 <form method='post'>
-<input placeholder="Digite aqui sua mensagem" type='text' name='newMsg'/>
+<input placeholder="Digite aqui sua mensagem" type='text' name='newMsg' required='required'/>
 <input type='submit' placeholder='Enviar'/>
 </form>
 

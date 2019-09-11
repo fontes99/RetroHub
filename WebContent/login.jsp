@@ -17,9 +17,9 @@
 	<br />
 	<form method='post'>
 		Usuário: <br />
-		<input type='text' name='username' /> <br /> 
+		<input type='text' name='username' required='required'/> <br /> 
 		Senha: <br />
-		<input type='password' name='password' /> <br /> 
+		<input type='password' name='password' required='required'/> <br /> 
 		<input type='submit' />
 	</form>
 	<br/> Ainda não tem um usuário?
