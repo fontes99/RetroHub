@@ -28,6 +28,7 @@ public class DAO {
 		}
 		try {
 			connection = DriverManager.getConnection(url, user, password);
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -59,7 +60,7 @@ public class DAO {
 			stmt.setString(1, name);
 			ResultSet rs = stmt.executeQuery();
 			if (rs == null) {
-				return true;
+				return false;
 			}
 			rs.close();
 			stmt.close();
@@ -68,7 +69,7 @@ public class DAO {
 			e.printStackTrace();
 		}
 		
-		return false;
+		return true;
 	}
 	
 	public int getUserId(User user) {
