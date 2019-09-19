@@ -1,5 +1,7 @@
 package br.edu.insper.model;
 
+//ssh -i '/home/borg/Downloads/TECWEB19_GRUPO29' ubuntu@ec2-204-236-193-213.compute-1.amazonaws.com
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,18 +12,23 @@ import java.util.Calendar;
 import java.util.List;
 
 public class DAO {
+	
+	String url = System.getenv("mysql_url");
+	String user = System.getenv("mysql_user");
+	String password = System.getenv("mysql_password");
 
 	private Connection connection = null;
 
 	public DAO() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/RetroHub", "root", "abacaxienois");
+			connection = DriverManager.getConnection(url, user, password);
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
